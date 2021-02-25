@@ -40,7 +40,7 @@ bind '"\C-j":history-search-forward'
 bind '"\C-l":clear-screen'
 
 
-PATH=/usr/local/abcloud-dev:${NVM_BIN}:$GOPATH/bin:/bin:/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:$HOME/bin:/usr/local/go/bin:/usr/local/kubebuilder/bin
+PATH=${NVM_BIN}:${GOPATH}/bin:${CONDA}/bin:${PYCHARM}/bin::/bin:/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:$HOME/bin:${GOROOT}/bin
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend

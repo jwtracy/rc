@@ -14,13 +14,19 @@ chrome() {
 	popd
 }
 
-python() {
+anacondainstall() {
 	pushd $(mktemp -d)
 	wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh
 	chmod +x Anaconda3-2020.11-Linux-x86_64.sh
 	sudo ./Anaconda3-2020.11-Linux-x86_64.sh -bf -p ${CONDA}
+	popd
+}
+
+pycharminstall() {
+	pushd $(mktemp -d)
 	wget https://download-cf.jetbrains.com/python/pycharm-professional-2020.3.3.tar.gz
-	tar -xzf pycharm-professional-2020.3.3.tar.gz -C ${PYCHARM}
+	sudo tar -xzf pycharm-professional-2020.3.3.tar.gz -C /usr/local
+    sudo mv /usr/local/pycharm-* ${PYCHARM}
 	popd
 }
 
@@ -39,7 +45,7 @@ nviminstall() {
     chmod u+x nvim.appimage
     sudo ./nvim.appimage
     popd
-	nvim +PlugInstall
+	vim +PlugInstall
 }
 
 golang() {
@@ -56,15 +62,15 @@ libs() {
 }
 
 deb() {
-	PACKAGES="build-essential dkms git curl linux-headers-$(uname -r)"
+	PACKAGES="build-essential dkms git tmux curl linux-headers-$(uname -r)"
 	sudo apt install -y ${PACKAGES}
 }
 
 deb
 libs
 # chrome
-bash
-nviminstall
-golang
-# pythong
-# 
+# bash
+# nviminstall
+# golang
+# anacondainstall
+# pycharminstall
