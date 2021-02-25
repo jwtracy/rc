@@ -1,0 +1,50 @@
+# .bashrc
+
+# Source system global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+set -o vi
+
+PS1="\[\e\[\e[35m\]\t\[\e[0m\] | \[\e[32m\]\$(git branch --show-current 2>/dev/null)\[\e[0m\] \$(pwd)\n\[\e[31m\]>\[\e[0m\] "
+
+export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export GOROOT=/usr/local/go
+export GO111MODULE=on
+
+export NVM_DIR=/usr/local/google/home/jwtracy/.nvm
+export NVM_CD_FLAGS=
+export NVM_BIN=/usr/local/google/home/jwtracy/.nvm/versions/node/v10.15.0/bin
+
+export EDITOR=vi
+
+export KUBEHOME=~/.kube
+export KUBECONFIG=$KUBEHOME/config
+export K8NS=default
+
+export CONDA=/usr/local/anaconda3
+export PYCHARM=/usr/local/pycharm
+
+bind '"\C-k":history-search-backward'
+bind '"\C-j":history-search-forward'
+bind '"\C-l":clear-screen'
+
+
+PATH=${NVM_BIN}:${GOPATH}/bin:${CONDA}/bin:${PYCHARM}/bin::/bin:/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:$HOME/bin:${GOROOT}/bin
+
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
