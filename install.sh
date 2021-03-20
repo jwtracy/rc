@@ -62,7 +62,7 @@ libs() {
 }
 
 deb() {
-	PACKAGES="build-essential dkms git tmux curl linux-headers-$(uname -r)"
+	PACKAGES="build-essential dkms git tmux curl net-tools linux-headers-$(uname -r)"
 	sudo apt install -y ${PACKAGES}
 }
 
