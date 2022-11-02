@@ -35,6 +35,14 @@ bashinstall() {
 	cp ${_DOT_DIR}/bash_aliases ~/.bash_aliases
 }
 
+keybaseinstall() {
+	pushd $(mktemp -d)
+    curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+    sudo apt install ./keybase_amd64.deb
+    run_keybase
+	popd
+}
+
 dockerinstall() {
     # from https://g3doc.corp.google.com/cloud/containers/g3doc/glinux-docker/install.md?cl=head#installation
     # Remove old docker-* packages (if installed)
@@ -76,6 +84,7 @@ EOF
     gcloud auth application-default login
     # Configure docker to use docker-credential-gcloud for GCR registries:
     gcloud auth configure-docker
+    # TODO consider adding docker desktop if you like it.
 }
 
 kubectlinstall() {
@@ -89,6 +98,7 @@ kubectlinstall() {
     sudo chmod o+x $(which helm)
     helm completion bash >> ~/.bashrc
     popd
+    # TODO evaluate best local kubernetes cluster distrobution
 }
 
 githubinstall() {
@@ -99,6 +109,7 @@ githubinstall() {
         && sudo apt update \
         && sudo apt install gh -y
     gh completion -s bash >> ~/.bashrc
+    # TODO add script for GPG key and GH auth login
 }
 
 nvminstall() {
@@ -142,7 +153,7 @@ deb() {
 	sudo apt install -y ${PACKAGES}
 }
 
-deb
+# deb
 # libs
 # chrome
 # bashinstall
@@ -154,3 +165,4 @@ deb
 # pycharminstall
 # githubinstall
 # dockerinstall
+# keybaseinstall
