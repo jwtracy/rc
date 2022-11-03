@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 _DOT_DIR="./dot"
 
 sudo apt update
@@ -41,6 +40,14 @@ keybaseinstall() {
     sudo apt install ./keybase_amd64.deb
     run_keybase
 	popd
+}
+
+awsinstall() {
+    pushd $(mktemp -d) 
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    popd
 }
 
 dockerinstall() {
@@ -166,3 +173,4 @@ deb() {
 # githubinstall
 # dockerinstall
 # keybaseinstall
+# awsinstall
