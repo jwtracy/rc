@@ -56,11 +56,11 @@ terraforminstall() {
     curl -Lo terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.12/terragrunt_linux_amd64
     chmod u+x terragrunt
     sudo install terragrunt /usr/local/bin
-    popd 
+    popd
 }
 
 awsinstall() {
-    pushd $(mktemp -d) 
+    pushd $(mktemp -d)
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
@@ -109,14 +109,13 @@ dockerinstall() {
     # from https://g3doc.corp.google.com/cloud/containers/g3doc/glinux-docker/install.md?cl=head#installation
     # Remove old docker-* packages (if installed)
     sudo apt remove docker-engine docker-runc docker-containerd
-    
+
     sudo glinux-add-repo docker-ce-"$(lsb_release -cs)"
     sudo apt update
     sudo apt install docker-ce docker-compose
     sudo systemctl stop docker
     sudo ip link set docker0 down
     sudo ip link del docker0
-    
     # Update Docker daemon config file:
     # * move Docker's storage location for more space.
     # * avoid conflicts between the Docker bridge and Corp IPs
