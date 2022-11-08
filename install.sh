@@ -2,8 +2,6 @@
 
 _DOT_DIR="./dot"
 
-sudo apt update
-
 source ${_DOT_DIR}/bashrc
 
 chrome() {
@@ -42,11 +40,68 @@ keybaseinstall() {
 	popd
 }
 
+terraforminstall() {
+    pushd $(mktemp -d)
+    rm -rf ~/.tfenv
+    git clone --depth=1 git@github.com:tfutils/tfenv.git ~/.tfenv
+    sed -e "s,^PATH=,PATH=\$HOME/.tfenv/bin:," -i ~/.bashrc
+    source ~/.bashrc
+    # Plato recommended version
+    tfenv install 1.1.3
+    # AWS Terra version
+    tfenv install 1.1.9
+    tfenv use 1.1.9
+    tfenv pin
+    # TerraGrunt installation
+    curl -Lo terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.38.12/terragrunt_linux_amd64
+    chmod u+x terragrunt
+    sudo install terragrunt /usr/local/bin
+    popd 
+}
+
 awsinstall() {
     pushd $(mktemp -d) 
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
+    _AWS_COMPLETION="complete -C '/usr/local/bin/aws_completer' aws"
+    echo "${_AWS_COMPLETION}" >> ~/.bashrc
+    curl -L https://github.com/99designs/aws-vault/releases/download/v6.6.0/aws-vault-linux-amd64 -o "aws-vault"
+    sudo install aws-vault /usr/local/bin
+    cat << EOF >> ~/.bashrc
+_aws-vault_bash_autocomplete() {
+    local i cur prev opts base
+
+    for (( i=1; i < COMP_CWORD; i++ )); do
+        if [[ ${COMP_WORDS[i]} == -- ]]; then
+            _command_offset $i+1
+            return
+        fi
+    done
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$( ${COMP_WORDS[0]} --completion-bash "${COMP_WORDS[@]:1:$COMP_CWORD}" )
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _aws-vault_bash_autocomplete -o default aws-vault
+EOF
+    popd
+}
+
+gruntworkinstall() {
+    pushd $(mktemp -d)
+    curl -OLsS https://raw.githubusercontent.com/gruntwork-io/gruntwork-installer/master/bootstrap-gruntwork-installer.sh
+    sudo bash ./bootstrap-gruntwork-installer.sh --version v0.0.22
+    popd
+}
+
+openvpninstall() {
+    pushd $(mktemp -d)
+    sudo apt-get install openvpn
+    curl -L https://github.com/gruntwork-io/terraform-aws-openvpn/releases/download/v0.24.3/openvpn-admin_linux_amd64 -o openvpn-admin
+    sudo install openvpn-admin /usr/local/bin
     popd
 }
 
@@ -156,6 +211,7 @@ libs() {
 }
 
 deb() {
+	sudo apt update
 	PACKAGES="build-essential ca-certificates dkms git tmux curl net-tools linux-headers-$(uname -r) code jq google-cloud-sdk google-cloud-sdk-gke-gcloud-auth-plugin"
 	sudo apt install -y ${PACKAGES}
 }
@@ -174,3 +230,6 @@ deb() {
 # dockerinstall
 # keybaseinstall
 # awsinstall
+# terraforminstall
+# openvpninstall
+# gruntworkinstall
