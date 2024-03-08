@@ -1,0 +1,6 @@
+call plug#begin()
+" Using Vim-Plug
+" Plug 'navarasu/onedark.nvim'
+call plug#end()
+
+" colorscheme onedark
