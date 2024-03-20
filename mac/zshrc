@@ -11,6 +11,7 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 export PATH="$HOME/.tgenv/bin:$PATH"
+export PATH="$HOME/.aws-cli:$PATH"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jwtracy/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jwtracy/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -19,7 +20,7 @@ export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
 
 eval "$(jenv init -)"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -100,9 +101,11 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(argocd
+aws
 brew
 colored-man-pages
 encode64
+gcloud
 gh
 git
 git-auto-fetch
@@ -117,10 +120,8 @@ node
 npm
 nvm
 pre-commit
-pyenv
 tmux
 vi-mode)
-
 
 
 source $ZSH/oh-my-zsh.sh
@@ -156,6 +157,10 @@ alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
 alias pip='pip3'
+alias ghpr='gh pr create --draft --fill'
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jwtracy/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jwtracy/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+zmodload zsh/zprof
+

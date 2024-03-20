@@ -19,6 +19,7 @@ icu4c
 istioctl
 jenv
 jpeg-turbo
+jq
 krb5
 kubernetes-cli
 libevent
@@ -43,6 +44,7 @@ msgpack
 ncurses
 neovim
 nvm
+oniguruma
 openjdk
 openssl@3
 pcre2
@@ -53,13 +55,17 @@ pyenv
 pyenv-virtualenv
 readline
 terraform
+terraform-docs
 terraform-ls
+tflint
 tmux
 tree
 tree-sitter
 unibilium
 utf8proc
+watch
 xorgproto
 xz
 zstd
+aws-vault
 temurin17
