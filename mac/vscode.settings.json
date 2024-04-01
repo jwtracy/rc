@@ -1,0 +1,21 @@
+{
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.startupEditor": "none",
+    "editor.fontSize": 16,
+    // "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.defaultProfile.linux": "tmux",
+    "terminal.integrated.defaultProfile.osx": "tmux",
+    "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    "gitProjectManager.baseProjectsFolders": [
+        "/Users/jwtracy/Source"
+    ],
+    "accessibility.signals.terminalBell": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off",
+        "announcement": "off"
+    }
+}
