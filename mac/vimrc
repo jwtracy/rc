@@ -1,6 +1,31 @@
 call plug#begin()
-" Using Vim-Plug
-" Plug 'navarasu/onedark.nvim'
-call plug#end()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-" colorscheme onedark
+" Make sure you use single quotes
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" On-demand loading: loaded when the specified command is executed
+Plug 'preservim/nerdtree'
+
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+Plug 'christoomey/vim-tmux-navigator'
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
+
+colorscheme catppuccin-macchiato
+
+set mouse=

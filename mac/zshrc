@@ -26,13 +26,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 
 bindkey -v
-bindkey '^K' history-search-backward
-bindkey '^J' history-search-forward
+# bindkey '^O' history-search-backward
+# bindkey '^I' history-search-forward
 bindkey '^R' history-incremental-search-backward
 
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# export TERM="screen-256color-bce"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -125,6 +126,10 @@ vi-mode)
 
 
 source $ZSH/oh-my-zsh.sh
+
+# now load zsh-syntax-highlighting plugin
+
+source ~/.zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # User configuration
 

@@ -1,5 +1,8 @@
 argocd
 autoconf
+aws-vault
+brotli
+c-ares
 ca-certificates
 cairo
 coreutils
@@ -23,6 +26,7 @@ jq
 krb5
 kubernetes-cli
 libevent
+libnghttp2
 libpng
 libtermkey
 libtiff
@@ -40,9 +44,11 @@ luv
 lz4
 lzo
 m4
+mpdecimal
 msgpack
 ncurses
 neovim
+node
 nvm
 oniguruma
 openjdk
@@ -50,10 +56,13 @@ openssl@3
 pcre2
 pixman
 pkg-config
-postgresql@13
+postgresql@14
 pyenv
 pyenv-virtualenv
+python@3.11
+python@3.12
 readline
+sqlite
 terraform
 terraform-docs
 terraform-ls
@@ -67,5 +76,6 @@ watch
 xorgproto
 xz
 zstd
-aws-vault
-temurin17
+font-0xproto-nerd-font
+font-hack-nerd-font
+visual-studio-code
