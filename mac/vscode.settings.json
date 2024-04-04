@@ -1,14 +1,18 @@
 {
     "workbench.colorTheme": "Catppuccin Macchiato",
     "workbench.startupEditor": "none",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
+    "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
     "editor.fontSize": 16,
-    // "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.defaultProfile.linux": "tmux",
     "terminal.integrated.defaultProfile.osx": "tmux",
-    "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+    "terminal.integrated.macOptionClickForcesSelection": true,
     "gitProjectManager.baseProjectsFolders": [
-        "/Users/jwtracy/Source"
+        "/Users/jwtracy/Source",
+        "/Users/jwtracy/Source/go/src"
     ],
     "accessibility.signals.terminalBell": {
         "sound": "off",
@@ -17,5 +21,9 @@
     "accessibility.signals.terminalCommandFailed": {
         "sound": "off",
         "announcement": "off"
+    },
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "enabled"
     }
 }
+
