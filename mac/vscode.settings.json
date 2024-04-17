@@ -6,8 +6,8 @@
     "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
     "editor.fontSize": 16,
     "terminal.integrated.fontSize": 16,
-    "terminal.integrated.defaultProfile.linux": "tmux",
-    "terminal.integrated.defaultProfile.osx": "tmux",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
     "terminal.integrated.macOptionClickForcesSelection": true,
     "gitProjectManager.baseProjectsFolders": [
@@ -24,6 +24,7 @@
     },
     "vs-kubernetes": {
         "vs-kubernetes.crd-code-completion": "enabled"
-    }
+    },
+    "editor.formatOnSave": true
 }
 
